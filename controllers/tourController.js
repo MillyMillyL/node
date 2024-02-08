@@ -26,8 +26,18 @@ exports.getTour = (req, res) => {
   res.status(200).json({ status: 'success', data: { tour: tour } });
 };
 
+exports.checkBody = (req, res, next) => {
+  if (!req.body.name || !req.body.price) {
+    return res
+      .status(400)
+      .json({ status: 'failed', message: 'Missing name or price' });
+  }
+  next();
+};
+
 exports.addTour = (req, res) => {
   const newId = tours[tours.length - 1].id + 1;
+
   const newTour = Object.assign({ id: newId }, req.body);
   tours.push(newTour);
   fs.writeFile(
