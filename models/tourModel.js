@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 const validator = require('validator');
+// const User = requre('/userModel');
 
 const tourSchema = new mongoose.Schema(
   {
@@ -58,7 +59,24 @@ const tourSchema = new mongoose.Schema(
     createAt: { type: Date, default: Date.now(), select: false },
     startDates: [Date],
     secretTour: { type: Boolean, default: false },
+    startLocation: {
+      type: { type: String, default: 'Point', enum: ['Point'] },
+      coordinates: [Number],
+      address: String,
+      description: String,
+    },
+    locations: [
+      {
+        type: { type: String, default: 'Point', enum: ['Point'] },
+        coordinates: [Number],
+        address: String,
+        description: String,
+        day: Number,
+      },
+    ],
+    guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   },
+
   { toJSON: { virtuals: true }, toObject: { virtuals: true } },
 );
 
@@ -66,11 +84,25 @@ tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
 
+//virtual populate
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'tour',
+  localField: '_id',
+});
+
 //document middleware: runs before .save() amd .create()
 tourSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
 });
+
+//when create the tour, save the guides as embeds
+// tourSchema.pre('save', async function (next) {
+//   const guidesPromises = this.guides.map(async (el) => await User.findById(el));
+//   this.guides = await Promise.all(guidesPromises);
+//   next();
+// });
 
 // tourSchema.post('save', (doc, next) => {
 //   console.log(doc);
@@ -83,6 +115,13 @@ tourSchema.pre(/^find/, function (next) {
   this.start = Date.now();
   next();
 });
+
+tourSchema.pre(/^find/, function (next) {
+  this.populate({ path: 'guides', select: '-__v -passwordChangedAt' });
+
+  next();
+});
+
 // tourSchema.post(/^find/, function (doc, next) {
 //   console.log(`Query took ${Date.now() - this.start} milliseconds`);
 //   console.log(doc);

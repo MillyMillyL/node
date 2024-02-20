@@ -1,12 +1,12 @@
 const express = require('express');
 const {
   getAllUsers,
-  createUser,
   getUser,
   updateUser,
   deleteUser,
   updateMe,
   deleteMe,
+  getMe,
 } = require('../controllers/userController');
 const {
   signup,
@@ -21,15 +21,16 @@ const router = express.Router();
 
 router.post('/signup', signup);
 router.post('/login', login);
-
 router.post('/forgotpassword', forgotPassword);
 router.patch('/resetpassword/:token', resetPassword);
-router.patch('/updatepassword', protect, updatePassword);
 
-router.patch('/updateme', protect, updateMe);
-router.delete('/deleteme', protect, deleteMe);
+router.use(protect);
+router.patch('/updatepassword', updatePassword);
+router.patch('/updateme', updateMe);
+router.delete('/deleteme', deleteMe);
+router.get('/me', getMe, getUser);
 
-router.route('/').get(getAllUsers).post(createUser);
+router.route('/').get(getAllUsers);
 router.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 
 module.exports = router;
