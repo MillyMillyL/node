@@ -1,7 +1,7 @@
 const Review = require('../models/reviewModel');
 const factory = require('./handlerFactory');
 
-exports.getAllReviews = factory.getMany(Review);
+exports.getAllReviews = factory.getAll(Review);
 
 exports.setTourUserIds = (req, res, next) => {
   //allow nested routes

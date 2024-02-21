@@ -42,12 +42,13 @@ exports.getOne = (Model, popOptions) =>
     res.status(200).json({ status: 'success', data: { data: doc } });
   });
 
-exports.getMany = (Model) =>
+exports.getAll = (Model) =>
   catchAsync(async (req, res, next) => {
     //to allow for nested Get reviews on tour (hack)
     let filter = {};
     if (req.params.tourId) filter = { tour: req.params.tourId };
 
+    // const doc = await APIFeatures(Model.find(filter), req.query).explain();
     const doc = await APIFeatures(Model.find(filter), req.query);
 
     //Send Response

@@ -24,16 +24,20 @@ router.route('/top-5-cheap').get(aliasTopTours, getAllTours);
 router.route('/tour-stats').get(getTourStats);
 router
   .route('/monthly-plan/:year')
-  .get(protect, restrictTo('administrator', 'lead-guide'), getMonthlyPlan);
+  .get(protect, restrictTo('admin', 'lead-guide'), getMonthlyPlan);
+
+router.route('tours-within/:distance/center/:latlng/unit/:unit');
+// /tours-distance?distance=233&center=-40,45&unit=mi
+// /tours-distance/233/center/-40,45/unit/mi  looks much nicer
 
 router
   .route('/')
   .get(getAllTours)
-  .post(protect, restrictTo('administrator', 'lead-guide'), addTour);
+  .post(protect, restrictTo('admin', 'lead-guide'), addTour);
 router
   .route('/:id')
   .get(getTour)
-  .patch(protect, restrictTo('administrator', 'lead-guide'), updateTour)
-  .delete(protect, restrictTo('administrator', 'lead-guide'), deleteTour);
+  .patch(protect, restrictTo('admin', 'lead-guide'), updateTour)
+  .delete(protect, restrictTo('admin', 'lead-guide'), deleteTour);
 
 module.exports = router;

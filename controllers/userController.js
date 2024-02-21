@@ -53,7 +53,7 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getAllUsers = factory.getMany(User);
+exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User);
 //do not update password with this
 exports.updateUser = factory.updateOne(User);
