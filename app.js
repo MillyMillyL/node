@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -11,16 +12,20 @@ const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRouter');
 const userRouter = require('./routes/userRouter');
 const reviewRoutes = require('./routes/reviewRoutes');
+const viewRoutes = require('./routes/viewRoutes');
 
 const app = express();
 
-//global middlewares
-//Set security http headers
-app.use(helmet());
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 
+//global middlewares
+//serving static files
+app.use(express.static(path.join(__dirname, 'public')));
+//Set security http headers
+app.use(helmet({ contentSecurityPolicy: false }));
 //development logging
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
-
 //limit request from same IP
 const limiter = rateLimit({
   max: 100,
@@ -52,15 +57,15 @@ app.use(
   }),
 );
 
-//serving static files
-app.use(express.static(`${__dirname}/public`));
-
 //test middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
 
+//Routes
+
+app.use('/', viewRoutes);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRoutes);
