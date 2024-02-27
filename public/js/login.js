@@ -1,7 +1,11 @@
 /* eslint-disable no-undef */
-
 import axios from 'axios';
 
+<<<<<<< HEAD
+import axios from 'axios';
+
+=======
+>>>>>>> aa266424bd1a33894d18d15bb2a47284fed78268
 export const login = async (email, password) => {
   try {
     const res = await axios({
