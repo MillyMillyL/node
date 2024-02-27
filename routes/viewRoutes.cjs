@@ -3,8 +3,8 @@ const {
   getOverview,
   getTour,
   getLoginForm,
-} = require('../controllers/viewsController');
-const { isLoggedIn } = require('../controllers/authController');
+} = require('../controllers/viewsController.cjs');
+const { isLoggedIn } = require('../controllers/authController.cjs');
 
 const router = express.Router();
 

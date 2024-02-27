@@ -1,11 +1,6 @@
-console.log('hello from parcel');
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable node/no-unsupported-features/es-syntax */
-/* eslint-disable no-undef */
-
-import '@babel/polyfill';
 import { login } from './login';
 import { displayMap } from './mapbox';
+import '@babel/polyfill';
 
 //DOM elements
 const mapBox = document.getElementById('map');

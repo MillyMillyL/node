@@ -1,15 +1,10 @@
-require("@babel/polyfill");
-var $ghRSA$axios = require("axios");
-
-
-function $parcel$interopDefault(a) {
-  return a && a.__esModule ? a.default : a;
-}
+import "@babel/polyfill";
+import $g3JMS$axios from "axios";
 
 /* eslint-disable no-undef */ 
-const $70af9284e599e604$export$596d806903d1f59e = async (email, password)=>{
+const $5b1f850b9f4b88b3$export$596d806903d1f59e = async (email, password)=>{
     try {
-        const res = await (0, ($parcel$interopDefault($ghRSA$axios)))({
+        const res = await (0, $g3JMS$axios)({
             method: "POST",
             url: "http://127.0.0.1:3000/api/v1/users/login",
             data: {
@@ -29,7 +24,7 @@ const $70af9284e599e604$export$596d806903d1f59e = async (email, password)=>{
 };
 
 
-/* eslint-disable no-undef */ /* eslint-disable no-unused-vars */ const $f60945d37f8e594c$export$4c5dd147b21b9176 = (locations)=>{
+/* eslint-disable no-undef */ /* eslint-disable no-unused-vars */ const $b0d576efe2e551a0$export$4c5dd147b21b9176 = (locations)=>{
     mapboxgl.accessToken = "pk.eyJ1IjoibW1sbG1tIiwiYSI6ImNsc3oybGN1czBsM2wyb21uNm1yY3p4bGcifQ.aFAbWIHZ30OxWryyQghicg";
     const map = new mapboxgl.Map({
         container: "map",
@@ -64,21 +59,21 @@ const $70af9284e599e604$export$596d806903d1f59e = async (email, password)=>{
 };
 
 
-console.log("hello from parcel");
+
 //DOM elements
-const $d0f7ce18c37ad6f6$var$mapBox = document.getElementById("map");
-const $d0f7ce18c37ad6f6$var$loginForm = document.querySelector(".form");
+const $3f924d562161b148$var$mapBox = document.getElementById("map");
+const $3f924d562161b148$var$loginForm = document.querySelector(".form");
 //values
-const $d0f7ce18c37ad6f6$var$email = document.getElementById("email").value;
-const $d0f7ce18c37ad6f6$var$password = document.getElementById("password").value;
+const $3f924d562161b148$var$email = document.getElementById("email").value;
+const $3f924d562161b148$var$password = document.getElementById("password").value;
 //delegation
-if ($d0f7ce18c37ad6f6$var$loginForm) $d0f7ce18c37ad6f6$var$loginForm.addEventListener("submit", (e)=>{
+if ($3f924d562161b148$var$loginForm) $3f924d562161b148$var$loginForm.addEventListener("submit", (e)=>{
     e.preventDefault();
-    (0, $70af9284e599e604$export$596d806903d1f59e)($d0f7ce18c37ad6f6$var$email, $d0f7ce18c37ad6f6$var$password);
+    (0, $5b1f850b9f4b88b3$export$596d806903d1f59e)($3f924d562161b148$var$email, $3f924d562161b148$var$password);
 });
-if ($d0f7ce18c37ad6f6$var$mapBox) {
-    const locations = JSON.parse($d0f7ce18c37ad6f6$var$mapBox.dataset.locations);
-    (0, $f60945d37f8e594c$export$4c5dd147b21b9176)(locations);
+if ($3f924d562161b148$var$mapBox) {
+    const locations = JSON.parse($3f924d562161b148$var$mapBox.dataset.locations);
+    (0, $b0d576efe2e551a0$export$4c5dd147b21b9176)(locations);
 }
 
 

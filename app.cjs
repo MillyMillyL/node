@@ -8,12 +8,12 @@ const mongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 
-const AppError = require('./utils/appError');
-const globalErrorHandler = require('./controllers/errorController');
-const tourRouter = require('./routes/tourRouter');
-const userRouter = require('./routes/userRouter');
-const reviewRoutes = require('./routes/reviewRoutes');
-const viewRoutes = require('./routes/viewRoutes');
+const AppError = require('./utils/appError.cjs');
+const globalErrorHandler = require('./controllers/errorController.cjs');
+const tourRouter = require('./routes/tourRouter.cjs');
+const userRouter = require('./routes/userRouter.cjs');
+const reviewRoutes = require('./routes/reviewRoutes.cjs');
+const viewRoutes = require('./routes/viewRoutes.cjs');
 
 const app = express();
 

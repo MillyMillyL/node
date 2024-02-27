@@ -7,7 +7,7 @@ const {
   updateMe,
   deleteMe,
   getMe,
-} = require('../controllers/userController');
+} = require('../controllers/userController.cjs');
 const {
   signup,
   login,
@@ -16,7 +16,7 @@ const {
   updatePassword,
   protect,
   restrictTo,
-} = require('../controllers/authController');
+} = require('../controllers/authController.cjs');
 
 const router = express.Router();
 

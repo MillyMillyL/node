@@ -1,5 +1,5 @@
 const express = require('express');
-const { protect, restrictTo } = require('../controllers/authController');
+const { protect, restrictTo } = require('../controllers/authController.cjs');
 
 const {
   getAllReviews,
@@ -8,7 +8,7 @@ const {
   updateReview,
   setTourUserIds,
   getReview,
-} = require('../controllers/reviewController');
+} = require('../controllers/reviewController.cjs');
 
 const router = express.Router({ mergeParams: true });
 

@@ -1,5 +1,5 @@
-const Review = require('../models/reviewModel');
-const factory = require('./handlerFactory');
+const Review = require('../models/reviewModel.cjs');
+const factory = require('./handlerFactory.cjs');
 
 exports.getAllReviews = factory.getAll(Review);
 

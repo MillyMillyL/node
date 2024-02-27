@@ -1,7 +1,7 @@
-const Tour = require('../models/tourModel');
-const appError = require('../utils/appError');
-const catchAsync = require('../utils/catchAsync');
-const factory = require('./handlerFactory');
+const Tour = require('../models/tourModel.cjs');
+const appError = require('../utils/appError.cjs');
+const catchAsync = require('../utils/catchAsync.cjs');
+const factory = require('./handlerFactory.cjs');
 
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
