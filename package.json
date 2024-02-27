@@ -2,23 +2,13 @@
   "name": "natours",
   "version": "1.0.0",
   "description": "",
-<<<<<<< HEAD
   "main": "./public/build/js/bundle.js",
-=======
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "main": "./public/js/bundle.js",
->>>>>>> aa266424bd1a33894d18d15bb2a47284fed78268
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production&nodemon server.js",
     "debug": "ndb server.js",
-<<<<<<< HEAD
     "watch:js": "parcel watch ./public/js/index.js --dist-dir ./public/build/js/",
     "build:js": "parcel build ./public/js/index.js --dist-dir ./public/build/js/"
-=======
-    "watch:js": "parcel watch ./public/js/index.js --dist-dir ./public/js",
-    "build:js": "parcel build ./public/js/index.js --dist-dir ./public/js"
->>>>>>> aa266424bd1a33894d18d15bb2a47284fed78268
   },
   "author": "Milly",
   "license": "ISC",
