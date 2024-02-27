@@ -121,3 +121,4 @@ dist
 
 node_modules
 public/build
+.parcel-cache
