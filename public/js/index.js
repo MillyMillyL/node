@@ -11,13 +11,13 @@ import { displayMap } from './mapbox';
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form');
 
-//values
-const email = document.getElementById('email').value;
-const password = document.getElementById('password').value;
-
 //delegation
 if (loginForm) {
+  //values
+
   loginForm.addEventListener('submit', (e) => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
     e.preventDefault();
     login(email, password);
   });
