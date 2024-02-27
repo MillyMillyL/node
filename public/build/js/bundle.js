@@ -5,7 +5,6 @@ var $ghRSA$axios = require("axios");
 function $parcel$interopDefault(a) {
   return a && a.__esModule ? a.default : a;
 }
-// HEAD
 
 /* eslint-disable no-undef */ 
 const $70af9284e599e604$export$596d806903d1f59e = async (email, password)=>{
@@ -66,7 +65,6 @@ const $70af9284e599e604$export$596d806903d1f59e = async (email, password)=>{
 
 
 console.log("hello from parcel");
-// HEAD
 //DOM elements
 const $d0f7ce18c37ad6f6$var$mapBox = document.getElementById("map");
 const $d0f7ce18c37ad6f6$var$loginForm = document.querySelector(".form");
@@ -82,14 +80,6 @@ if ($d0f7ce18c37ad6f6$var$mapBox) {
     const locations = JSON.parse($d0f7ce18c37ad6f6$var$mapBox.dataset.locations);
     (0, $f60945d37f8e594c$export$4c5dd147b21b9176)(locations);
 }
-//
-const $d0f7ce18c37ad6f6$var$locations = JSON.parse(document.getElementById("map").dataset.locations);
-document.querySelector(".form").addEventListener("submit", (e)=>{
-    e.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    (0, $70af9284e599e604$export$596d806903d1f59e)(email, password);
-}); //aa266424bd1a33894d18d15bb2a47284fed78268
 
 
 //# sourceMappingURL=bundle.js.map
