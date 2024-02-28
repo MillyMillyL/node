@@ -4,7 +4,7 @@ const {
   getTour,
   getLoginForm,
   getAccount,
-  updateUserData,
+  // updateUserData,
 } = require('../controllers/viewsController');
 const { isLoggedIn, protect } = require('../controllers/authController');
 
@@ -16,6 +16,8 @@ router.get('/', getOverview);
 router.get('/tour/:slug', getTour);
 router.get('/login', getLoginForm);
 router.get('/me', protect, getAccount);
-router.post('/submit-user-data', protect, updateUserData);
+
+// use form submit method
+// router.post('/submit-user-data', protect, updateUserData);
 
 module.exports = router;
