@@ -12250,7 +12250,7 @@ var _mapbox = require("./mapbox");
 
 //DOM elements
 var mapBox = document.getElementById('map');
-var loginForm = document.querySelector('.form');
+var loginForm = document.querySelector('.form--login');
 var logoutButton = document.querySelector('.nav__el--logout');
 
 //delegation
@@ -12296,7 +12296,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58812" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57601" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
