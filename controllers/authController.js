@@ -61,6 +61,14 @@ exports.login = catchAsync(async (req, res, next) => {
   await createSendToken(user, 200, res);
 });
 
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'Logged out', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ status: 'success' });
+};
+
 exports.protect = catchAsync(async (req, res, next) => {
   //get token and check if it's there
   let token;
@@ -108,33 +116,37 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 
 //Only for rendered pages, no errors
-exports.isLoggedIn = catchAsync(async (req, res, next) => {
-  //get token and check if it's there
-  if (req.cookies.jwt) {
-    //verify token
-    const decoded = await promisify(jwt.verify)(
-      req.cookies.jwt,
-      process.env.JWT_SECRET,
-    );
+exports.isLoggedIn = async (req, res, next) => {
+  try {
+    //get token and check if it's there
+    if (req.cookies.jwt) {
+      //verify token
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET,
+      );
 
-    //check if user still exists
-    const currentUser = await User.findById(decoded.id);
-    if (!currentUser) {
+      //check if user still exists
+      const currentUser = await User.findById(decoded.id);
+      if (!currentUser) {
+        return next();
+      }
+
+      //check if user changed password after the token was issued
+      const passwordChanged = currentUser.changedPasswordAfter(decoded.iat);
+      if (passwordChanged) {
+        return next();
+      }
+
+      //There is a logged in user
+      res.locals.user = currentUser;
       return next();
     }
-
-    //check if user changed password after the token was issued
-    const passwordChanged = currentUser.changedPasswordAfter(decoded.iat);
-    if (passwordChanged) {
-      return next();
-    }
-
-    //There is a logged in user
-    res.locals.user = currentUser;
+  } catch (error) {
     return next();
   }
   next();
-});
+};
 
 exports.restrictTo =
   (...roles) =>
