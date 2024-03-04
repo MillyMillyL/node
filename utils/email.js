@@ -5,7 +5,14 @@ const { htmlToText } = require('html-to-text');
 const newTransport = () => {
   if (process.env.NODE_ENV === 'production') {
     //sendgrid
-    return 1;
+    return nodemailer.createTransport({
+      service: 'SendGrid',
+      //didn't get a sendgrid account, just to show as example
+      auth: {
+        user: process.env.SENDGRID_USERNAME,
+        pass: process.env.SENDGRID_PASSWORD,
+      },
+    });
   }
 
   return nodemailer.createTransport({
@@ -46,8 +53,15 @@ async function send(user, url, template, subject) {
 }
 
 async function sendWelcome(user, url) {
-  console.log('send welcome email');
   await send(user, url, 'welcome', 'Welcome to the Natours Family!');
 }
+async function sendPasswordReset(user, url) {
+  await send(
+    user,
+    url,
+    'passwordReset',
+    'Your password reset token (valid for 10 min)',
+  );
+}
 
-module.exports = { sendWelcome };
+module.exports = { sendWelcome, sendPasswordReset };
