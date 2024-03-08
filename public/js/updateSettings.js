@@ -5,9 +5,7 @@ import { showAlert } from './alerts';
 //type is either 'password' or 'data'
 export const updateSettings = async (data, type) => {
   const url =
-    type === 'data'
-      ? 'http://127.0.0.1:3000/api/v1/users/updateme'
-      : 'http://127.0.0.1:3000/api/v1/users/updatepassword';
+    type === 'data' ? '/api/v1/users/updateme' : '/api/v1/users/updatepassword';
   try {
     const res = await axios({
       method: 'PATCH',

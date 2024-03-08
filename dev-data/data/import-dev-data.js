@@ -39,7 +39,7 @@ const importData = async () => {
     await Tour.create(tours, { validateBeforeSave: false });
     await User.create(users, { validateBeforeSave: false });
     await Review.create(reviews, { validateBeforeSave: false });
-    console.log('data successfully loaded');
+    // console.log('data successfully loaded');
   } catch (error) {
     console.log(error);
   }
@@ -64,4 +64,4 @@ if (process.argv[2] === '--import') {
 } else if (process.argv[2] === '--delete') {
   deleteData();
 }
-console.log(process.argv);
+// console.log(process.argv);
