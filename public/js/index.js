@@ -2,7 +2,7 @@
 /* eslint-disable node/no-unsupported-features/es-syntax */
 /* eslint-disable no-undef */
 
-import '@babel/polyfill';
+// import '@babel/polyfill';
 import { login, logout } from './login';
 import { displayMap } from './mapbox';
 import { updateSettings } from './updateSettings';
