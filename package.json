@@ -4,7 +4,7 @@
   "description": "",
   "main": "./public/build/js/bundle.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "start:prod": "SET NODE_ENV=production&nodemon server.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/build/js/ --out-file bundle.js",
