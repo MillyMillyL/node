@@ -2,7 +2,7 @@
   "name": "natours",
   "version": "1.0.0",
   "description": "",
-  "main": "./public/build/js/bundle.js",
+  "main": "server.js",
   "targets": {
     "main": false
   },
