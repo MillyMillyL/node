@@ -5,6 +5,7 @@
   "main": "./public/build/js/bundle.js",
   "scripts": {
     "start": "node server.js",
+    "dev": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production&nodemon server.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/build/js/ --out-file bundle.js",
@@ -51,5 +52,8 @@
     "parcel": "^2.11.0",
     "prettier": "^3.2.5",
     "validator": "^13.11.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
