@@ -145,4 +145,6 @@ dist
 
 
 public/build/*
+
+.parcel-cache
  

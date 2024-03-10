@@ -2,17 +2,14 @@
   "name": "natours",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
-  "targets": {
-    "main": false
-  },
+  "source": "public/js/index.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production&nodemon server.js",
     "debug": "ndb server.js",
-    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/build/js/ --out-file bundle.js",
-    "build": "parcel build ./public/js/index.js --dist-dir ./public/build/js"
+    "watch": "parcel watch",
+    "build": "parcel build --dist-dir public/build/js"
   },
   "author": "Milly",
   "license": "ISC",
@@ -43,6 +40,7 @@
     "xss": "^1.0.14"
   },
   "devDependencies": {
+    "buffer": "^6.0.3",
     "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -54,8 +52,5 @@
     "parcel": "^2.11.0",
     "prettier": "^3.2.5",
     "validator": "^13.11.0"
-  },
-  "engines": {
-    "node": ">=10.0.0"
   }
 }
